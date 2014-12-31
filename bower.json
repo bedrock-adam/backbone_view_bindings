@@ -1,0 +1,21 @@
+{
+  "name": "bvb",
+  "version": "0.0.0",
+  "authors": [
+    "Adam Mikulasev <adam@dealfetch.com.au>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "bootstrap": "~3.3.1",
+    "backbone.syphon": "~0.4.1"
+  }
+}

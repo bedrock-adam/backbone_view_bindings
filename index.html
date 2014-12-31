@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+        <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+        <!-- <link rel="stylesheet" href="css/main.css"> -->
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <h1>Article Uploader Page</h1>
+            </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <form id="article-form">
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input id="title" name="title" type="text" class="form-control" placeholder="Enter Title...">
+                  <p class="help-block">Please ensure the title is descriptive</p>
+                </div>
+                <div class="form-group">
+                  <label for="content">Content</label>
+                  <textarea id="content" name="content" class="form-control"></textarea>
+                </div>
+                <button id="x" type="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/backbone/backbone.js"></script>
+        <script src="bower_components/backbone.syphon/lib/backbone.syphon.js"></script>
+        <script src="js/models/articleModel.js"></script>
+        <script src="js/views/articleView.js"></script>
+        <script>
+          var articleModel = new ArticleModel({ title: 'Some Title', content: 'Some Content' });
+
+          var articleView = new ArticleView({
+            el: $('#article-form'),
+
+            model: articleModel
+          });
+
+
+        </script>
+    </body>
+</html>
