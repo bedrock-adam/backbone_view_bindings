@@ -29,38 +29,41 @@
             </div>
 
           <div class="row">
-            <div class="col-lg-6">
-              <form id="article-form">
-                <div class="form-group">
-                  <label for="title">Title</label>
-                  <input id="title" name="title" type="text" class="form-control" placeholder="Enter Title...">
-                  <p class="help-block">Please ensure the title is descriptive</p>
-                </div>
-                <div class="form-group">
-                  <label for="content">Content</label>
-                  <textarea id="content" name="content" class="form-control"></textarea>
-                </div>
-                <button id="x" type="submit" class="btn btn-default">Submit</button>
-              </form>
+            <div id="article-form-container" class="col-lg-6">
             </div>
           </div>
         </div>
 
+        <!-- templates -->
+
+        <script type="text/template" id="article-form-template">
+          <div class="form-group">
+            <label for="article-title">Title</label>
+            <input id="article-title" name="article[title]" type="text" class="form-control" placeholder="Enter Title...">
+            <p class="help-block">Please ensure the title is descriptive</p>
+          </div>
+          <div class="form-group">
+            <label for="article-content">Content</label>
+            <textarea id="article-content" name="article[content]" class="form-control"></textarea>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+       </script>
+
+
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
         <script src="bower_components/backbone/backbone.js"></script>
-        <script src="bower_components/backbone.syphon/lib/backbone.syphon.js"></script>
+        <script src="bower_components/backbone.stickit/backbone.stickit.js"></script>
         <script src="js/models/articleModel.js"></script>
         <script src="js/views/articleView.js"></script>
         <script>
           var articleModel = new ArticleModel({ title: 'Some Title', content: 'Some Content' });
 
           var articleView = new ArticleView({
-            el: $('#article-form'),
-
             model: articleModel
           });
 
+          $('#article-form-container').append(articleView.render().el);
 
         </script>
     </body>
