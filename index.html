@@ -99,13 +99,18 @@
         <script src="bower_components/backbone/backbone.js"></script>
         <script src="bower_components/backbone.stickit/backbone.stickit.js"></script>
         <script src="js/models/articleModel.js"></script>
+        <script src="js/collections/articleCollection.js"></script>
         <script src="js/views/articleShowView.js"></script>
         <script src="js/views/articleFormView.js"></script>
         <script>
           $(function() {
-            var articleModel = new ArticleModel({
-              title: 'Some Title', summary: 'Some Summary'
-            });
+            var articleCollection = new ArticleCollection([
+              { title: 'Some Title A', summary: 'Some Summary A' },
+              { title: 'Some Title B', summary: 'Some Summary B' },
+              { title: 'Some Title C', summary: 'Some Summary C' },
+            ]);
+
+            var articleModel = articleCollection.at(0);
 
             var articleShowView = new ArticleShowView({
               model: articleModel
