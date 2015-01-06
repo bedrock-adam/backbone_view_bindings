@@ -78,14 +78,12 @@
 
         <script type="text/template" id="article-table-template">
           <thead>
-           <tr>
+            <tr>
              <th>Title</th>
              <th>Summary</th>
-           </tr>
+            </tr>
           </thead>
           <tbody>
-           <tr>
-           </tr>
           </tbody>
         </script>
 
@@ -100,6 +98,8 @@
         <script src="bower_components/backbone.stickit/backbone.stickit.js"></script>
         <script src="js/models/articleModel.js"></script>
         <script src="js/collections/articleCollection.js"></script>
+        <script src="js/views/articleTableView.js"></script>
+        <script src="js/views/articleRowView.js"></script>
         <script src="js/views/articleShowView.js"></script>
         <script src="js/views/articleFormView.js"></script>
         <script>
@@ -109,6 +109,10 @@
               { title: 'Some Title B', summary: 'Some Summary B' },
               { title: 'Some Title C', summary: 'Some Summary C' },
             ]);
+
+            var articleTableView = new ArticleTableView({
+              collection: articleCollection
+            });
 
             var articleModel = articleCollection.at(0);
 
@@ -120,6 +124,7 @@
               model: articleModel
             });
 
+            $('#article-table-container').append(articleTableView.render().$el);
             $('#article-form-container').append(articleFormView.render().$el);
             $('#article-show-container').append(articleShowView.render().$el);
           });
