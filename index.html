@@ -98,10 +98,11 @@
         <script src="bower_components/backbone.stickit/backbone.stickit.js"></script>
         <script src="js/models/articleModel.js"></script>
         <script src="js/collections/articleCollection.js"></script>
-        <script src="js/views/articleTableView.js"></script>
         <script src="js/views/articleRowView.js"></script>
+        <script src="js/views/articleTableView.js"></script>
         <script src="js/views/articleShowView.js"></script>
         <script src="js/views/articleFormView.js"></script>
+        <script src="js/views/applicationView.js"></script>
         <script>
           $(function() {
             var articleCollection = new ArticleCollection([
@@ -110,23 +111,11 @@
               { title: 'Some Title C', summary: 'Some Summary C' },
             ]);
 
-            var articleTableView = new ArticleTableView({
+            var applicationView = new ApplicationView({
               collection: articleCollection
             });
 
-            var articleModel = articleCollection.at(0);
-
-            var articleShowView = new ArticleShowView({
-              model: articleModel
-            });
-
-            var articleFormView = new ArticleFormView({
-              model: articleModel
-            });
-
-            $('#article-table-container').append(articleTableView.render().$el);
-            $('#article-form-container').append(articleFormView.render().$el);
-            $('#article-show-container').append(articleShowView.render().$el);
+            applicationView.render();
           });
         </script>
 
