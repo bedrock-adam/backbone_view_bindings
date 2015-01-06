@@ -1,4 +1,4 @@
-var ArticleView = Backbone.View.extend({
+var ArticleFormView = Backbone.View.extend({
   tagName: 'form',
 
   template: _.template($('#article-form-template').html()),
@@ -9,7 +9,7 @@ var ArticleView = Backbone.View.extend({
 
   bindings: {
     '#article-title': 'title',
-    '#article-content': 'content'
+    '#article-summary': 'summary'
   },
 
   render: function() {

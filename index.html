@@ -23,48 +23,102 @@
         <![endif]-->
 
         <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <h1>Article Uploader Page</h1>
+          <header>
+            <h1>Header here</h1>
+          </header>
+
+          <aside>
+            <nav>
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </nav>
+          </aside>
+
+          <main>
+            <div id="article-table-container">
             </div>
 
-          <div class="row">
-            <div id="article-form-container" class="col-lg-6">
+            <div id="article-show-container">
             </div>
-          </div>
+
+            <div id="article-form-container">
+            </div>
+          </main>
+
+          <footer>
+            <p>Footer summary here</p>
+          </footer>
         </div>
 
         <!-- templates -->
 
         <script type="text/template" id="article-form-template">
+          <h1>New Article</h1>
+
           <div class="form-group">
             <label for="article-title">Title</label>
             <input id="article-title" name="article[title]" type="text" class="form-control" placeholder="Enter Title...">
             <p class="help-block">Please ensure the title is descriptive</p>
           </div>
           <div class="form-group">
-            <label for="article-content">Content</label>
-            <textarea id="article-content" name="article[content]" class="form-control"></textarea>
+            <label for="article-summary">Summary</label>
+            <textarea id="article-summary" name="article[summary]" class="form-control"></textarea>
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
-       </script>
+        </script>
 
+        <script type="text/template" id="article-show-template">
+         <h1><%- title %></h1>
+
+         <p>
+           <%- summary %>
+         </p>
+        </script>
+
+        <script type="text/template" id="article-table-template">
+          <thead>
+           <tr>
+             <th>Title</th>
+             <th>Summary</th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+           </tr>
+          </tbody>
+        </script>
+
+        <script type="text/template" id="article-row-template">
+          <td><%- title %></td>
+          <td><%- summary %></td>
+        </script>
 
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
         <script src="bower_components/backbone/backbone.js"></script>
         <script src="bower_components/backbone.stickit/backbone.stickit.js"></script>
         <script src="js/models/articleModel.js"></script>
-        <script src="js/views/articleView.js"></script>
+        <script src="js/views/articleShowView.js"></script>
+        <script src="js/views/articleFormView.js"></script>
         <script>
-          var articleModel = new ArticleModel({ title: 'Some Title', content: 'Some Content' });
+          $(function() {
+            var articleModel = new ArticleModel({
+              title: 'Some Title', summary: 'Some Summary'
+            });
 
-          var articleView = new ArticleView({
-            model: articleModel
+            var articleShowView = new ArticleShowView({
+              model: articleModel
+            });
+
+            var articleFormView = new ArticleFormView({
+              model: articleModel
+            });
+
+            $('#article-form-container').append(articleFormView.render().$el);
+            $('#article-show-container').append(articleShowView.render().$el);
           });
-
-          $('#article-form-container').append(articleView.render().el);
-
         </script>
+
     </body>
 </html>
