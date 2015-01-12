@@ -4,7 +4,8 @@ var ArticleFormView = Backbone.View.extend({
   template: _.template($('#article-form-template').html()),
 
   events: {
-    'submit': 'submit'
+    'submit': 'submit',
+    'click .cancel': 'cancel'
   },
 
   bindings: {
@@ -22,5 +23,11 @@ var ArticleFormView = Backbone.View.extend({
 
   submit: function(e) {
     e.preventDefault();
+  },
+
+  cancel: function(e) {
+    e.preventDefault();
+
+    this.spawn('cancel:article');
   }
 });
